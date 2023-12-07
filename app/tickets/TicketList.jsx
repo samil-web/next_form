@@ -4,6 +4,12 @@ import next from "next"
 // it enables program to run tasks without waiting for other tasks
 import Link from "next/link"
 async function getTickets() {
+  // imitate delay
+  const delay = new Promise((resolve) => setTimeout(resolve, 3000))
+
+  //where can we use delay ? we will delay loading of let's say tickets page, so it should affect page.jsx 
+  //delay is a promise, so we can use await keyword
+  await delay
     const res = await fetch('http://localhost:4000/tickets', {
       next: {
         revalidate: 0 // use 0 to opt out of using cache
